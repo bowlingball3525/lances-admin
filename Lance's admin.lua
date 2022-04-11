@@ -521,3 +521,176 @@ plr.Chatted:Connect(function(message)
 		end
 	end
 end)
+plr.Chatted:Connect(function(message)
+	local loweredString = string.lower(message)
+	local args = string.split(loweredString, " ")
+	if args[1] == Prefix .. "rescale" then
+		local character = game:GetService("Players").LocalPlayer.Character
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+local function wipe_parts()
+			for _, part in pairs(character:GetDescendants()) do
+				if part:IsA("BasePart") and part.Name ~= "Head" then
+					for _, attachment in pairs(part:GetDescendants()) do
+						if attachment:IsA("Attachment") and attachment:FindFirstChild("OriginalPosition") then
+							attachment.OriginalPosition:Destroy()
+						end
+					end
+					part:WaitForChild("OriginalSize"):Destroy()
+					if part:FindFirstChild("AvatarPartScaleType") then
+						part:FindFirstChild("AvatarPartScaleType"):Destroy()
+					end
+				end
+			end
+		end
+		wipe_parts()
+		humanoid:WaitForChild("BodyTypeScale"):Destroy()
+		wipe_parts()
+		humanoid:WaitForChild("BodyWidthScale"):Destroy()
+		wipe_parts()
+		humanoid:WaitForChild("BodyDepthScale"):Destroy()
+		wipe_parts()
+		humanoid:WaitForChild("HeadScale"):Destroy()
+	end
+end)
+plr.Chatted:Connect(function(message)
+	local loweredString = string.lower(message)
+	local args = string.split(loweredString, " ")
+	if args[1] == Prefix .. "bigleg" then
+            local function delete()
+			game.Players.LocalPlayer.Character.LeftFoot.OriginalSize:Destroy()
+			game.Players.LocalPlayer.Character.LeftLowerLeg.OriginalSize:Destroy()
+			game.Players.LocalPlayer.Character.LeftUpperLeg.OriginalSize:Destroy()
+		end
+		local function makeNew()
+			local thing = Instance.new('Vector3Value', game.Players.LocalPlayer.Character.LeftFoot)
+			thing.Name = 'OriginalSize'
+			local thing = Instance.new('Vector3Value', game.Players.LocalPlayer.Character.LeftLowerLeg)
+			thing.Name = 'OriginalSize'
+			local thing = Instance.new('Vector3Value', game.Players.LocalPlayer.Character.LeftUpperLeg)
+			thing.Name = 'OriginalSize'
+		end
+		if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+			game.Players.LocalPlayer.Character.LeftLowerLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+			game.Players.LocalPlayer.Character.LeftUpperLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+			game.Players.LocalPlayer.Character.LeftLowerLeg.LeftKneeRigAttachment:Destroy()
+			game.Players.LocalPlayer.Character.LeftUpperLeg.LeftKneeRigAttachment:Destroy()
+			for i, v in next, game.Players.LocalPlayer.Character.Humanoid:GetChildren() do
+				if v:IsA'NumberValue' then
+					delete()
+					v:Destroy()
+					makeNew()
+					wait(1)
+				end
+			end
+		end
+	end
+end)
+plr.Chatted:Connect(function(message)
+	local loweredString = string.lower(message)
+	local args = string.split(loweredString, " ")
+	if args[1] == Prefix .. "blackchat" then
+		game:GetService("Players").LocalPlayer.PlayerGui.BubbleChat.DescendantAdded:Connect(function(c)
+			if c:IsA("ImageLabel") and c.Name == "ChatBubble" or c.Name == "ChatBubbleTail" or c.Name == "SmallTalkBubble" then
+				c.ImageColor3 = Color3.fromRGB(0, 0, 0)
+			end
+			if c:IsA("TextLabel") or c.Name == "BubbleText" then
+				c.TextColor3 = Color3.fromRGB(255, 255, 255)
+				c.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			end
+		end)
+		game:GetService("Players").LocalPlayer.PlayerGui.BubbleChat.DescendantAdded:Connect(function(c)
+			if c:IsA("ImageLabel") and c.Name == "ChatBubble" or c.Name == "ChatBubbleTail" or c.Name == "SmallTalkBubble" then
+				c.ImageColor3 = Color3.fromRGB(0, 0, 0)
+			end
+			if c:IsA("TextLabel") and c.Name == "BubbleText" then
+				c.TextColor3 = Color3.fromRGB(255, 255, 255)
+				c.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			end
+		end)
+	end
+end)
+plr.Chatted:Connect(function(message)
+	local loweredString = string.lower(message)
+	local args = string.split(loweredString, " ")
+	if args[1] == Prefix .. "bait" then
+		local minePos = CFrame.new(5556.78906, 29.9942169, -17137.8027, 0.919021428, -9.53787378e-08, -0.394207567, 7.70871935e-08, 1, -6.22361256e-08, 0.394207567, 2.68079781e-08, 0.919021428)
+		local minePos2 = CFrame.new(5503.51855, 32.1502457, -17102.4609, -0.0469753221, -1.05281146e-07, -0.998896062, -5.14456069e-08, 1, -1.02978149e-07, 0.998896062, 4.65513814e-08, -0.0469753221) - Vector3.new(0, 2, 0)
+		local hidePos = CFrame.new(5547.75928, 32.0002213, -17147.7383, -0.830992401, 2.20322214e-08, -0.556283772, 9.57291562e-08, 1, -1.03396836e-07, 0.556283772, -1.3917456e-07, -0.830992401)
+		local hidePos2 = CFrame.new(5502.82471, 32.1502457, -17141.5566, -0.99996525, 1.36514551e-08, 0.00833945442, 1.43237182e-08, 1, 8.05526739e-08, -0.00833945442, 8.06693237e-08, -0.99996525)
+		local mine = game.Players.LocalPlayer.Character:FindFirstChildOfClass'Tool' or game.Players.LocalPlayer.Backpack:FindFirstChildOfClass'Tool'
+		mine.Parent = game.Players.LocalPlayer.Character
+		wait(.5)
+		mine.Handle.Massless = true
+		local pee = true
+		local new = Instance.new('Part', workspace)
+		new.Size = Vector3.new(3, 2, 1)
+		new.Transparency = 0
+		new.Massless = true
+		new.CanCollide = false
+		new.Color = Color3.new(1, 0, 0)
+		new.Transparency = .65
+		new.Material = 'SmoothPlastic'
+		wait()
+		local weld = Instance.new("Weld", mine.Handle)
+		weld.C0 = CFrame.new()
+		weld.C1 = CFrame.new()
+		weld.Part0 = mine.Handle
+		weld.Part1 = new
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = hidePos
+		new.Touched:Connect(function(x)
+			local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+			if x.Name == 'Left Leg' or x.Name == 'Right Leg' or x.Name == 'RightFoot' or x.Name == 'LeftFoot' then
+				game.Players.LocalPlayer.Character.Head.Anchored = false
+				pee = false
+				new:Destroy()
+				local Target = x.Parent
+				local LocalPlayer = game.Players.LocalPlayer
+				mine.Parent = LocalPlayer.Backpack
+				local newHum = LocalPlayer.Character.Humanoid:Clone()
+				newHum.Parent = LocalPlayer.Character
+				LocalPlayer.Character.Humanoid:Destroy()
+				newHum:ChangeState(15)
+				mine.Parent = LocalPlayer.Character
+				firetouchinterest(mine.Handle, Target.Head, 0)
+				game.Players.LocalPlayer.CharacterAdded:Wait()
+				repeat
+					wait()
+				until LocalPlayer.Character
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+			end
+		end)
+		task.spawn(function()
+			repeat
+				mine.Grip = CFrame.new()
+				mine.Grip = mine.Handle.CFrame:ToObjectSpace(minePos):Inverse()
+				mine.Parent = game.Players.LocalPlayer.Backpack
+				mine.Parent = game.Players.LocalPlayer.Character
+				game:GetService('RunService').RenderStepped:Wait()
+			until pee == false
+		end)
+	end
+end)
+plr.Chatted:Connect(function(message)
+	local loweredString = string.lower(message)
+	local args = string.split(loweredString, " ")
+	if args[1] == Prefix .. "cmds" then
+		warn
+[[>valk (gives the play a valk)
+>narwhal (makes player a narwhal)
+>fall (brings person above the map)
+>under (brings player under the map)
+>tfling (toolfling)
+>re (respawns you)
+>swagify (gives the player drip) 
+>swagify2 (gives the player drip)
+>swagify3 (gives the player drip)
+>script (says the scipt name)
+>swim (brings player to the pool)
+>clean (makes the player shower)
+>dishes (makes the player do the dishes)
+>rescale (hip resize, go r15 max scale, or r15 all low scale)
+>bigleg (makes long leg)
+>blackchat (makes chat boxes black insead of white)
+>bait (puts a fake boombox on the ground, and when someone pickes it up they die)]]
+	end
+end)
