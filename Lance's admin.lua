@@ -914,6 +914,8 @@ plr.Chatted:Connect(function(message)
 				until LocalPlayer.Character
 				game.Workspace.Gravity = math.huge
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+				local FaggotFucktard = imgay.Character:WaitForChild("ForceField")
+				FaggotFucktard:Destroy()
 			end
 		end
 	end
@@ -974,6 +976,8 @@ plr.Chatted:Connect(function(message)
 				until LocalPlayer.Character
 				game.Workspace.Gravity = math.huge
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+				local FaggotFucktard = imgay.Character:WaitForChild("ForceField")
+				FaggotFucktard:Destroy()
 			end
 		end
 	end
