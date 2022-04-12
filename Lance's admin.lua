@@ -717,60 +717,8 @@ plr.Chatted:Connect(function(message)
 	local loweredString = string.lower(message)
 	local args = string.split(loweredString, " ")
 	if args[1] == Prefix .. "tfling2" then
-		local LP = game.Players.LocalPlayer
-		local mouse = LP:GetMouse()
-		local RunService = game:GetService('RunService')
-		local tools = {}
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5482.42626953125, 33.700828552246094, -17088.7265625, 1, 0, 0, 0, 1, 0, 0, 0, -1)
-		wait(1)
-		LP.Character.Humanoid:UnequipTools()
-		for i, v in next, LP.Backpack:GetChildren() do
-			tools[#tools + 1] = v
-			v.Parent = LP.Character
-		end
-		wait(2)
-		if LP.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
-			LP.Character['RightHand']:Destroy()
-		else
-			LP.Character['Right Arm']:Destroy()
-		end
-		wait(1)
-		for i, v in next, tools do
-			v.Parent = LP.Backpack
-		end
-		wait(1)
-		for i, v in next, tools do
-			v.Parent = LP.Character
-		end
-		for i, v in next, tools do
-			if v.Handle then
-				v.Handle:BreakJoints()
-				_G.a = Instance.new('AngularVelocity', v.Handle)
-			end
-		end
-		wait(1)
-		while true do
-			for i, plr in next, game.Players:GetPlayers() do
-				pcall(function()
-					if plr ~= LP and plr.Character and plr.Character:FindFirstChild'HumanoidRootPart' then
-						local start = tick()
-						while tick() - start < .7 do
-							local step = tick()
-							for i, v in next, tools do
-								v.Handle.Velocity = Vector3.new(500, 694, 10)
-								_G.a = Vector3.new(200, 200, 0)
-								v.Handle.Position = plr.Character.HumanoidRootPart.Position - Vector3.new(0, math.random(-1, 1), 0)
-								RunService.Heartbeat:Wait()
-							end
-							RunService.Heartbeat:Wait()
-						end
-						RunService.Heartbeat:Wait()
-					end
-				end)
-			end
-			RunService.Heartbeat:Wait()
-		end
-	end
+loadstring(game:HttpGet('https://raw.githubusercontent.com/v9h/scripts/main/massfling.lua'))() --credit to v9h on github
+end
 end)
 plr.Chatted:Connect(function(message)
 	local loweredString = string.lower(message)
