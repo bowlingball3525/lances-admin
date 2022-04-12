@@ -10,7 +10,7 @@ game.StarterGui:SetCore("SendNotification", {
 	Title = "Lance's admin";
 	Text = "Lance's admin loaded. Do >cmds for a list of cmds in the console";
 	Icon = "rbxassetid://57254792";
-	Duration = 5;
+	Duration = 1;
 })
 
 
@@ -887,5 +887,41 @@ plr.Chatted:Connect(function(message)
             repeat task.wait() until Character and Character.PrimaryPart
             Character:SetPrimaryPartCFrame(CFrame.new(%s))
         ]], tostring(OldPos)))
+	end
+end)
+plr.Chatted:Connect(function(message)
+	local loweredString = string.lower(message)
+	local args = string.split(loweredString, " ")
+	if args[1] == Prefix .. "jail" then
+		for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+			if string.sub(string.lower(player.DisplayName), 1, string.len(args[2])) == string.lower(args[2]) or string.sub(string.lower(player.Name), 1, string.len(args[2])) == string.lower(args[2]) then
+				local plrpos = player.Character.HumanoidRootPart.CFrame
+				local value = false
+				local Target = player
+				local pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+				game.Players.LocalPlayer.Character.Humanoid.Name = 1
+				local l = game.Players.LocalPlayer.Character["1"]:Clone()
+				l.Parent = game.Players.LocalPlayer.Character
+				l.Name = "Humanoid"
+				wait()
+				game.Players.LocalPlayer.Character["1"]:Destroy()
+				game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character
+				game.Players.LocalPlayer.Character.Animate.Disabled = true
+				wait()
+				game.Players.LocalPlayer.Character.Animate.Disabled = false
+				game.Players.LocalPlayer.Character.Humanoid.DisplayDistanceType = "None"
+				for i, v in pairs(game:GetService'Players'.LocalPlayer.Backpack:GetChildren()) do
+					game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+				end
+				wait(.3)
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
+				wait(0.3)
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5616.93262, 37.0954857, -17260.0312, 0.999859095, 1.50780544e-08, -0.0167852938, -1.50388821e-08, 1, 2.45992937e-09, 0.0167852938, -2.20715068e-09, 0.999859095)
+				task.wait(5)
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+				local FaggotFucktard = imgay.Character:WaitForChild("ForceField")
+				FaggotFucktard:Destroy()
+			end
+		end
 	end
 end)
