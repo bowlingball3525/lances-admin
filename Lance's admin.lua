@@ -5,7 +5,13 @@
 
 
 
-
+wait(0.3)
+game.StarterGui:SetCore("SendNotification", {
+	Title = "Loaded Lance's admin";
+	Text = "Lance's admin loaded. Do >cmds for a list of commands in the console";
+	Icon = "rbxassetid://57254792";
+	Duration = 5;
+})
 
 
 imgay = game:GetService("Players").LocalPlayer
