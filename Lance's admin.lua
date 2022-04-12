@@ -1,6 +1,10 @@
 --[[
+	this is for learning because im new to lua and wanna try 2 learn.
+
 	lanc#0001
 --]]
+
+
 
 
 
@@ -710,15 +714,20 @@ plr.Chatted:Connect(function(message)
 >id (play a id on your boombox that says to suck on my nuts)
 >tfling2 (slower tfling, very broken. i recomend using regular tfling)
 >tools (checks the players tools in their invintory)
->rjre (rejoins the same server in the same spot)]]
+>rjre (rejoins the same server in the same spot)
+>jail (puts the play in the fireplace aka jail, they cant get out unless they reset)
+>anti (anti void & kill)
+>unanti (turns off the anti void & kill)
+>rvoid (void that rescale's before it voids, be r15 max scale)
+>void (void for r16 and r15, does not rescale before void)]]
 	end
 end)
 plr.Chatted:Connect(function(message)
 	local loweredString = string.lower(message)
 	local args = string.split(loweredString, " ")
 	if args[1] == Prefix .. "tfling2" then
-loadstring(game:HttpGet('https://raw.githubusercontent.com/v9h/scripts/main/massfling.lua'))() --credit to v9h on github
-end
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/v9h/scripts/main/massfling.lua'))() --credit to v9h on github
+	end
 end)
 plr.Chatted:Connect(function(message)
 	local loweredString = string.lower(message)
@@ -869,6 +878,102 @@ plr.Chatted:Connect(function(message)
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
 				local FaggotFucktard = imgay.Character:WaitForChild("ForceField")
 				FaggotFucktard:Destroy()
+			end
+		end
+	end
+end)
+plr.Chatted:Connect(function(message)
+	local loweredString = string.lower(message)
+	local args = string.split(loweredString, " ")
+	if args[1] == Prefix .. "void" then
+		local RS = game:GetService("RunService")
+		for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+			if string.sub(string.lower(v.DisplayName), 1, string.len(args[2])) == string.lower(args[2]) or string.sub(string.lower(v.Name), 1, string.len(args[2])) == string.lower(args[2]) then
+				local character = game:GetService("Players").LocalPlayer.Character
+				local humanoid = character:FindFirstChildOfClass("Humanoid")
+				local LocalPlayer = game.Players.LocalPlayer
+				local newHum = LocalPlayer.Character.Humanoid:Clone()
+				newHum.Parent = LocalPlayer.Character
+				LocalPlayer.Character.Humanoid:Destroy()
+				for i, v in next, LocalPlayer.Backpack:GetChildren() do
+					if v:IsA'Tool' then
+						v.Parent = LocalPlayer.Character
+					end
+				end
+				local tool = LocalPlayer.Character:FindFirstChildOfClass'Tool'
+				local pos = LocalPlayer.Character.HumanoidRootPart.CFrame
+				firetouchinterest(tool.Handle, v.Character.Head, 0)
+				RS.Stepped:Wait()
+				game.Workspace.Gravity = math.huge
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0, 400, 0)
+				RS.Stepped:Wait()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, -1000, 0)
+				game.Players.LocalPlayer.CharacterAdded:Wait()
+				repeat
+					wait()
+				until LocalPlayer.Character
+				game.Workspace.Gravity = math.huge
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+			end
+		end
+	end
+end)
+plr.Chatted:Connect(function(message)
+	local loweredString = string.lower(message)
+	local args = string.split(loweredString, " ")
+	if args[1] == Prefix .. "rvoid" then
+		local RS = game:GetService("RunService")
+		for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+			if string.sub(string.lower(v.DisplayName), 1, string.len(args[2])) == string.lower(args[2]) or string.sub(string.lower(v.Name), 1, string.len(args[2])) == string.lower(args[2]) then
+				local character = game:GetService("Players").LocalPlayer.Character
+				local humanoid = character:FindFirstChildOfClass("Humanoid")
+				local function wipe_parts()
+					for _, part in pairs(character:GetDescendants()) do
+						if part:IsA("BasePart") and part.Name ~= "Head" then
+							for _, attachment in pairs(part:GetDescendants()) do
+								if attachment:IsA("Attachment") and attachment:FindFirstChild("OriginalPosition") then
+									attachment.OriginalPosition:Destroy()
+								end
+							end
+							part:WaitForChild("OriginalSize"):Destroy()
+							if part:FindFirstChild("AvatarPartScaleType") then
+								part:FindFirstChild("AvatarPartScaleType"):Destroy()
+							end
+						end
+					end
+				end
+				wipe_parts()
+				humanoid:WaitForChild("BodyTypeScale"):Destroy()
+				wipe_parts()
+				humanoid:WaitForChild("BodyWidthScale"):Destroy()
+				wipe_parts()
+				humanoid:WaitForChild("BodyDepthScale"):Destroy()
+				wipe_parts()
+				humanoid:WaitForChild("HeadScale"):Destroy()
+				wait(0.2)
+				local LocalPlayer = game.Players.LocalPlayer
+				local newHum = LocalPlayer.Character.Humanoid:Clone()
+				newHum.Parent = LocalPlayer.Character
+				LocalPlayer.Character.Humanoid:Destroy()
+				for i, v in next, LocalPlayer.Backpack:GetChildren() do
+					if v:IsA'Tool' then
+						v.Parent = LocalPlayer.Character
+					end
+				end
+				local tool = LocalPlayer.Character:FindFirstChildOfClass'Tool'
+				local pos = LocalPlayer.Character.HumanoidRootPart.CFrame
+				firetouchinterest(tool.Handle, v.Character.Head, 0)
+				RS.Stepped:Wait()
+				game.Workspace.Gravity = math.huge
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0, 400, 0)
+				RS.Stepped:Wait()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, -1000, 0)
+				game.Players.LocalPlayer.CharacterAdded:Wait()
+				repeat
+					wait()
+				until LocalPlayer.Character
+				game.Workspace.Gravity = math.huge
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
 			end
 		end
 	end
