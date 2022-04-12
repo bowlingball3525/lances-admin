@@ -8,7 +8,7 @@
 wait(0.3)
 game.StarterGui:SetCore("SendNotification", {
 	Title = "Lance's admin";
-	Text = "Lance's admin loaded. Do >cmds for a list of commands in the console";
+	Text = "Lance's admin loaded. Do >cmds for a list of cmds in the console";
 	Icon = "rbxassetid://57254792";
 	Duration = 5;
 })
