@@ -714,7 +714,7 @@ plr.Chatted:Connect(function(message)
 >id (play a id on your boombox that says to suck on my nuts)
 >tfling2 (slower tfling, very broken. i recomend using regular tfling)
 >tools (checks the players tools in their invintory)
->rjre (rejoins the same server in the same spot)
+>rje (rejoins the same server in the same spot)
 >jail (puts the play in the fireplace aka jail, they cant get out unless they reset)
 >anti (anti void & kill)
 >unanti (turns off the anti void & kill)
@@ -799,7 +799,7 @@ end)
 plr.Chatted:Connect(function(message)
 	local loweredString = string.lower(message)
 	local args = string.split(loweredString, " ")
-	if args[1] == Prefix .. "rjre" then
+	if args[1] == Prefix .. "rje" then
 		local TeleportService = game:GetService("TeleportService")
 		local Players = game:GetService("Players")
 		local Player = Players.LocalPlayer
