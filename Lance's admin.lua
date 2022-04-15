@@ -370,7 +370,7 @@ plr.Chatted:Connect(function(message)
 	if args[1] == Prefix .. "script" then
 		wait(1)
 		local args = {
-			[1] = "Lance's Admin | lanc# 0001",
+			[1] = "Lance's Admin | lanc0001 ptt",
 			[2] = "All"
 		}
 		game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
